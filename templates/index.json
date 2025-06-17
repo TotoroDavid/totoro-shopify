@@ -106,7 +106,7 @@
       "name": "Blog Posts Recientes",
       "settings": {
         "heading": "Últimas Noticias",
-        "blog": "loremipsum-example",
+        "blog": "news",
         "posts_to_show": 3
       }
     }
