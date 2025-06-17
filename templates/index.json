@@ -100,11 +100,21 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "seccion_blog_reciente_fm6NNf": {
+      "type": "seccion-blog-reciente",
+      "name": "Blog Posts Recientes",
+      "settings": {
+        "heading": "Últimas Noticias",
+        "blog": "loremipsum-example",
+        "posts_to_show": 3
+      }
     }
   },
   "order": [
     "135ba7a3-e64e-4736-8050-4a1bb58b8a6c",
     "collage_8EN393",
-    "video_hnhWX6"
+    "video_hnhWX6",
+    "seccion_blog_reciente_fm6NNf"
   ]
 }
