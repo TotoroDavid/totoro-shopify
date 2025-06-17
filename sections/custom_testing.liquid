@@ -1,0 +1,200 @@
+<div class="page-default-container">
+  <div class="container">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'title_block' %}
+        {% if block.settings.title != blank %}
+          <h1 class="h1_page">{{ block.settings.title }}</h1>
+        {% endif %}
+
+        {% when 'image_text_block_h2' %}
+        <div class="image-text">
+          {% if block.settings.image %}
+            <div class="image">
+              <img
+                class="img-container_page"
+                src="{{ block.settings.image | img_url: '700x700' }}"
+                alt="{{ block.settings.title }}">
+            </div>
+          {% endif %}
+          <div class="text">
+            {% if block.settings.title != blank %}
+              <h2>{{ block.settings.title }}</h2>
+            {% endif %}
+            {% if block.settings.text != blank %}
+              <p>{{ block.settings.text | richtext }}</p>
+            {% endif %}
+          </div>
+        </div>
+
+        {% when 'text_image_block_h2' %}
+        <div class="text-image">
+          <div class="text">
+            {% if block.settings.title != blank %}
+              <h2>{{ block.settings.title }}</h2>
+            {% endif %}
+            {% if block.settings.text != blank %}
+              <p>{{ block.settings.text | richtext }}</p>
+            {% endif %}
+          </div>
+          {% if block.settings.image %}
+            <div class="image">
+              <img
+                class="img-container_page"
+                src="{{ block.settings.image | img_url: '700x700' }}"
+                alt="{{ block.settings.title }}">
+            </div>
+          {% endif %}
+        </div>
+
+        {% when 'image_text_block_h3' %}
+        <div class="image-text">
+          {% if block.settings.image %}
+            <div class="image">
+              <img
+                class="img-container_page"
+                src="{{ block.settings.image | img_url: '700x700' }}"
+                alt="{{ block.settings.title }}">
+            </div>
+          {% endif %}
+          <div class="text">
+            {% if block.settings.title != blank %}
+              <h3>{{ block.settings.title }}</h3>
+            {% endif %}
+            {% if block.settings.text != blank %}
+              <p>{{ block.settings.text | richtext }}</p>
+            {% endif %}
+          </div>
+        </div>
+
+        {% when 'text_image_block_h3' %}
+        <div class="text-image">
+          <div class="text">
+            {% if block.settings.title != blank %}
+              <h3>{{ block.settings.title }}</h3>
+            {% endif %}
+            {% if block.settings.text != blank %}
+              <p>{{ block.settings.text | richtext }}</p>
+            {% endif %}
+          </div>
+          {% if block.settings.image %}
+            <div class="image">
+              <img
+                class="img-container_page"
+                src="{{ block.settings.image | img_url: '700x700' }}"
+                alt="{{ block.settings.title }}">
+            </div>
+          {% endif %}
+        </div>
+
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Página Personalizable",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "title_block",
+        "name": "Bloque de Título",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Título H1",
+            "default": "Título Predeterminado"
+          }
+        ]
+      },
+      {
+        "type": "image_text_block_h2",
+        "name": "Imagen-Texto H2",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Imagen"
+          }, {
+            "type": "text",
+            "id": "title",
+            "label": "Título H2",
+            "default": "Título H2 Predeterminado"
+          }, {
+            "type": "richtext",
+            "id": "text",
+            "label": "Texto"
+          }
+        ]
+      },
+      {
+        "type": "text_image_block_h2",
+        "name": "Texto-Imagen H2",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Título H2",
+            "default": "Título H2 Predeterminado"
+          }, {
+            "type": "richtext",
+            "id": "text",
+            "label": "Texto"
+          }, {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Imagen"
+          }
+        ]
+      },
+      {
+        "type": "image_text_block_h3",
+        "name": "Imagen-Texto H3",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Imagen"
+          }, {
+            "type": "text",
+            "id": "title",
+            "label": "Título H3",
+            "default": "Título H3 Predeterminado"
+          }, {
+            "type": "richtext",
+            "id": "text",
+            "label": "Texto"
+          }
+        ]
+      }, {
+        "type": "text_image_block_h3",
+        "name": "Texto-Imagen H3",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Título H3",
+            "default": "Título H3 Predeterminado"
+          }, {
+            "type": "richtext",
+            "id": "text",
+            "label": "Texto"
+          }, {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Imagen"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Página Personalizable",
+        "category": "Texto e Imagen"
+      }
+    ],
+    "max_blocks": 20
+  }
+{% endschema %}

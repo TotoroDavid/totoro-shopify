@@ -1,0 +1,110 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "135ba7a3-e64e-4736-8050-4a1bb58b8a6c": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--20863092588822__135ba7a3-e64e-4736-8050-4a1bb58b8a6c-heading-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "LoreimIspum",
+            "heading_size": "h1"
+          }
+        },
+        "button_HBxiKA": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "template--20863092588822__135ba7a3-e64e-4736-8050-4a1bb58b8a6c-heading-1",
+        "button_HBxiKA"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/ForceRenewZipHoodieRust_6.webp",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "collage_8EN393": {
+      "type": "collage",
+      "blocks": {
+        "image_zfCRCr": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/MiaMeshBraSting_2.webp"
+          }
+        },
+        "product_Lr6FzM": {
+          "type": "product",
+          "settings": {
+            "product": "force-renew-zip-hoodie",
+            "second_image": false
+          }
+        },
+        "collection_7h4aUD": {
+          "type": "collection",
+          "settings": {
+            "collection": "frontpage"
+          }
+        }
+      },
+      "block_order": [
+        "image_zfCRCr",
+        "product_Lr6FzM",
+        "collection_7h4aUD"
+      ],
+      "settings": {
+        "heading": "Multimedia collage",
+        "heading_size": "h1",
+        "desktop_layout": "left",
+        "mobile_layout": "column",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "video_hnhWX6": {
+      "type": "video",
+      "name": "t:sections.video.presets.name",
+      "settings": {
+        "heading": "Video",
+        "heading_size": "h1",
+        "enable_video_looping": false,
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "description": "",
+        "full_width": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "135ba7a3-e64e-4736-8050-4a1bb58b8a6c",
+    "collage_8EN393",
+    "video_hnhWX6"
+  ]
+}
