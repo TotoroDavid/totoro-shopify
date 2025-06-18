@@ -266,7 +266,9 @@
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-  {% render 'aio-script' %} <script src="//staticxx.s3.amazonaws.com/aio_stats_lib_v1.min.js?v=1.0"></script></head>
+    {% render 'aio-script' %}
+    <script src="//staticxx.s3.amazonaws.com/aio_stats_lib_v1.min.js?v=1.0"></script>
+  </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
@@ -279,9 +281,8 @@
 
     {% sections 'header-group' %}
 
-
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
-      {{ content_for_layout }}  
+      {{ content_for_layout }}
     </main>
 
     {% sections 'footer-group' %}
@@ -335,5 +336,11 @@
     {%- if settings.predictive_search_enabled -%}
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-  <input type="hidden" name="aaaformbuilder_customer_logged_id" value="{{customer.id}}" id="aaaformbuilder_customer_logged_id"></body>
+    <input
+      type="hidden"
+      name="aaaformbuilder_customer_logged_id"
+      value="{{customer.id}}"
+      id="aaaformbuilder_customer_logged_id"
+    >
+  </body>
 </html>
