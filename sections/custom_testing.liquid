@@ -1,200 +1,100 @@
-<div class="page-default-container">
-  <div class="container">
-    {% for block in section.blocks %}
-      {% case block.type %}
-        {% when 'title_block' %}
-        {% if block.settings.title != blank %}
-          <h1 class="h1_page">{{ block.settings.title }}</h1>
-        {% endif %}
+<section class="px-[5%] py-16 md:py-24 lg:py-28">
+  <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+    <div style="margin-bottom: 3rem; text-align: center; max-width: 640px; margin-left: auto; margin-right: auto;">
+      <p style="font-weight: 600; margin-bottom: 1rem;">Blog</p>
+      <h2 style="font-size: 3rem; font-weight: 700; margin-bottom: 1.5rem;">Short heading goes here</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
 
-        {% when 'image_text_block_h2' %}
-        <div class="image-text">
-          {% if block.settings.image %}
-            <div class="image">
-              <img
-                class="img-container_page"
-                src="{{ block.settings.image | img_url: '700x700' }}"
-                alt="{{ block.settings.title }}">
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+
+      <div class="article-card">
+        <a href="#" style="display: block; margin-bottom: 1.5rem;">
+          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg" alt="Placeholder image" style="width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 8px;">
+        </a>
+        <p style="font-weight: 600; font-size: 0.875rem; margin-bottom: 0.5rem;">Category</p>
+        <a href="#" style="display: block; margin-bottom: 0.5rem;">
+          <h5 style="font-size: 1.25rem; font-weight: 700;">Blog title heading will go here</h5>
+        </a>
+        <p style="margin-bottom: 1.5rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
+        <div style="display: flex; align-items: center;">
+          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg" alt="Placeholder avatar" style="width: 3rem; height: 3rem; border-radius: 9999px; margin-right: 1rem;">
+          <div>
+            <h6 style="font-weight: 600; font-size: 0.875rem;">Full name</h6>
+            <div style="display: flex; align-items: center; font-size: 0.875rem; color: #666;">
+              <p>11 Jan 2022</p>
+              <span style="margin: 0 0.5rem;">•</span>
+              <p>5 min read</p>
             </div>
-          {% endif %}
-          <div class="text">
-            {% if block.settings.title != blank %}
-              <h2>{{ block.settings.title }}</h2>
-            {% endif %}
-            {% if block.settings.text != blank %}
-              <p>{{ block.settings.text | richtext }}</p>
-            {% endif %}
           </div>
         </div>
+      </div>
 
-        {% when 'text_image_block_h2' %}
-        <div class="text-image">
-          <div class="text">
-            {% if block.settings.title != blank %}
-              <h2>{{ block.settings.title }}</h2>
-            {% endif %}
-            {% if block.settings.text != blank %}
-              <p>{{ block.settings.text | richtext }}</p>
-            {% endif %}
-          </div>
-          {% if block.settings.image %}
-            <div class="image">
-              <img
-                class="img-container_page"
-                src="{{ block.settings.image | img_url: '700x700' }}"
-                alt="{{ block.settings.title }}">
+      <div class="article-card">
+        <a href="#" style="display: block; margin-bottom: 1.5rem;">
+          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg" alt="Placeholder image" style="width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 8px;">
+        </a>
+        <p style="font-weight: 600; font-size: 0.875rem; margin-bottom: 0.5rem;">Category</p>
+        <a href="#" style="display: block; margin-bottom: 0.5rem;">
+          <h5 style="font-size: 1.25rem; font-weight: 700;">Blog title heading will go here</h5>
+        </a>
+        <p style="margin-bottom: 1.5rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
+        <div style="display: flex; align-items: center;">
+          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg" alt="Placeholder avatar" style="width: 3rem; height: 3rem; border-radius: 9999px; margin-right: 1rem;">
+          <div>
+            <h6 style="font-weight: 600; font-size: 0.875rem;">Full name</h6>
+            <div style="display: flex; align-items: center; font-size: 0.875rem; color: #666;">
+              <p>11 Jan 2022</p>
+              <span style="margin: 0 0.5rem;">•</span>
+              <p>5 min read</p>
             </div>
-          {% endif %}
-        </div>
-
-        {% when 'image_text_block_h3' %}
-        <div class="image-text">
-          {% if block.settings.image %}
-            <div class="image">
-              <img
-                class="img-container_page"
-                src="{{ block.settings.image | img_url: '700x700' }}"
-                alt="{{ block.settings.title }}">
-            </div>
-          {% endif %}
-          <div class="text">
-            {% if block.settings.title != blank %}
-              <h3>{{ block.settings.title }}</h3>
-            {% endif %}
-            {% if block.settings.text != blank %}
-              <p>{{ block.settings.text | richtext }}</p>
-            {% endif %}
           </div>
         </div>
+      </div>
 
-        {% when 'text_image_block_h3' %}
-        <div class="text-image">
-          <div class="text">
-            {% if block.settings.title != blank %}
-              <h3>{{ block.settings.title }}</h3>
-            {% endif %}
-            {% if block.settings.text != blank %}
-              <p>{{ block.settings.text | richtext }}</p>
-            {% endif %}
-          </div>
-          {% if block.settings.image %}
-            <div class="image">
-              <img
-                class="img-container_page"
-                src="{{ block.settings.image | img_url: '700x700' }}"
-                alt="{{ block.settings.title }}">
+      <div class="article-card">
+        <a href="#" style="display: block; margin-bottom: 1.5rem;">
+          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg" alt="Placeholder image" style="width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 8px;">
+        </a>
+        <p style="font-weight: 600; font-size: 0.875rem; margin-bottom: 0.5rem;">Category</p>
+        <a href="#" style="display: block; margin-bottom: 0.5rem;">
+          <h5 style="font-size: 1.25rem; font-weight: 700;">Blog title heading will go here</h5>
+        </a>
+        <p style="margin-bottom: 1.5rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
+        <div style="display: flex; align-items: center;">
+          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg" alt="Placeholder avatar" style="width: 3rem; height: 3rem; border-radius: 9999px; margin-right: 1rem;">
+          <div>
+            <h6 style="font-weight: 600; font-size: 0.875rem;">Full name</h6>
+            <div style="display: flex; align-items: center; font-size: 0.875rem; color: #666;">
+              <p>11 Jan 2022</p>
+              <span style="margin: 0 0.5rem;">•</span>
+              <p>5 min read</p>
             </div>
-          {% endif %}
+          </div>
         </div>
+      </div>
 
-      {% endcase %}
-    {% endfor %}
+    </div>
+
+    <div style="display: flex; justify-content: center; margin-top: 3.5rem;">
+      <a href="#" class="button" style="padding: 0.75rem 1.5rem; border: 1px solid #000; border-radius: 4px; text-decoration: none; color: #000;">View all</a>
+    </div>
+
   </div>
-</div>
+</section>
 
 {% schema %}
   {
-    "name": "Página Personalizable",
-    "settings": [],
-    "blocks": [
-      {
-        "type": "title_block",
-        "name": "Bloque de Título",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Título H1",
-            "default": "Título Predeterminado"
-          }
-        ]
-      },
-      {
-        "type": "image_text_block_h2",
-        "name": "Imagen-Texto H2",
-        "settings": [
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Imagen"
-          }, {
-            "type": "text",
-            "id": "title",
-            "label": "Título H2",
-            "default": "Título H2 Predeterminado"
-          }, {
-            "type": "richtext",
-            "id": "text",
-            "label": "Texto"
-          }
-        ]
-      },
-      {
-        "type": "text_image_block_h2",
-        "name": "Texto-Imagen H2",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Título H2",
-            "default": "Título H2 Predeterminado"
-          }, {
-            "type": "richtext",
-            "id": "text",
-            "label": "Texto"
-          }, {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Imagen"
-          }
-        ]
-      },
-      {
-        "type": "image_text_block_h3",
-        "name": "Imagen-Texto H3",
-        "settings": [
-          {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Imagen"
-          }, {
-            "type": "text",
-            "id": "title",
-            "label": "Título H3",
-            "default": "Título H3 Predeterminado"
-          }, {
-            "type": "richtext",
-            "id": "text",
-            "label": "Texto"
-          }
-        ]
-      }, {
-        "type": "text_image_block_h3",
-        "name": "Texto-Imagen H3",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Título H3",
-            "default": "Título H3 Predeterminado"
-          }, {
-            "type": "richtext",
-            "id": "text",
-            "label": "Texto"
-          }, {
-            "type": "image_picker",
-            "id": "image",
-            "label": "Imagen"
-          }
-        ]
-      }
+    "name": "Blog Avanzado",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+      
     ],
     "presets": [
       {
-        "name": "Página Personalizable",
-        "category": "Texto e Imagen"
+        "name": "Blog Avanzado"
       }
-    ],
-    "max_blocks": 20
+    ]
   }
 {% endschema %}
