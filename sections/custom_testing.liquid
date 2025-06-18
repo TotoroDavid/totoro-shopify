@@ -1,29 +1,138 @@
-<section class="px-[5%] py-16 md:py-24 lg:py-28">
-  <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
-    <div style="margin-bottom: 3rem; text-align: center; max-width: 640px; margin-left: auto; margin-right: auto;">
-      <p style="font-weight: 600; margin-bottom: 1rem;">Blog</p>
-      <h2 style="font-size: 3rem; font-weight: 700; margin-bottom: 1.5rem;">Short heading goes here</h2>
+<style>
+  /* Estilos base (Móvil Primero) */
+  .custom-blog-section {
+    padding: 4rem 1rem;
+  }
+  .custom-blog__header {
+    margin-bottom: 3.5rem;
+    text-align: center;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .custom-blog__tagline {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+  .custom-blog__heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+  }
+  .custom-blog__grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 columna por defecto */
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .article-card__image {
+    display: block;
+    margin-bottom: 1.5rem;
+  }
+  .article-card__image img {
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .article-card__category {
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+  .article-card__title-link {
+    display: block;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  .article-card__title {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .article-card__excerpt {
+    margin-bottom: 1.5rem;
+  }
+  .article-card__author-info {
+    display: flex;
+    align-items: center;
+  }
+  .article-card__author-avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    margin-right: 1rem;
+  }
+  .article-card__author-name {
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+  .article-card__meta {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: #6c6c6c;
+  }
+  .article-card__meta-divider {
+    margin: 0 0.5rem;
+  }
+  .custom-blog__button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 3.5rem;
+  }
+  .custom-blog__button {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid #000;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #000;
+  }
+
+  /* --- LA MAGIA RESPONSIVE --- */
+  /* Se aplica solo si la pantalla es más ancha de 750px */
+  @media (min-width: 750px) {
+    .custom-blog__grid {
+      grid-template-columns: repeat(3, 1fr); /* 3 columnas en escritorio */
+    }
+    .custom-blog-section {
+       padding: 6rem 2rem;
+    }
+     .custom-blog__heading {
+      font-size: 3rem;
+    }
+  }
+</style>
+
+<section class="custom-blog-section">
+  <div class="container">
+    <div class="custom-blog__header">
+      <p class="custom-blog__tagline">Blog</p>
+      <h2 class="custom-blog__heading">Short heading goes here</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+    <div class="custom-blog__grid">
 
       <div class="article-card">
-        <a href="#" style="display: block; margin-bottom: 1.5rem;">
-          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg" alt="Placeholder image" style="width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 8px;">
+        <a href="#" class="article-card__image">
+          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg" alt="Placeholder image">
         </a>
-        <p style="font-weight: 600; font-size: 0.875rem; margin-bottom: 0.5rem;">Category</p>
-        <a href="#" style="display: block; margin-bottom: 0.5rem;">
-          <h5 style="font-size: 1.25rem; font-weight: 700;">Blog title heading will go here</h5>
+        <p class="article-card__category">Category</p>
+        <a href="#" class="article-card__title-link">
+          <h5 class="article-card__title">Blog title heading will go here</h5>
         </a>
-        <p style="margin-bottom: 1.5rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
-        <div style="display: flex; align-items: center;">
-          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg" alt="Placeholder avatar" style="width: 3rem; height: 3rem; border-radius: 9999px; margin-right: 1rem;">
+        <p class="article-card__excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
+        <div class="article-card__author-info">
+          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg" alt="Placeholder avatar" class="article-card__author-avatar">
           <div>
-            <h6 style="font-weight: 600; font-size: 0.875rem;">Full name</h6>
-            <div style="display: flex; align-items: center; font-size: 0.875rem; color: #666;">
+            <h6 class="article-card__author-name">Full name</h6>
+            <div class="article-card__meta">
               <p>11 Jan 2022</p>
-              <span style="margin: 0 0.5rem;">•</span>
+              <span class="article-card__meta-divider">•</span>
               <p>5 min read</p>
             </div>
           </div>
@@ -31,21 +140,21 @@
       </div>
 
       <div class="article-card">
-        <a href="#" style="display: block; margin-bottom: 1.5rem;">
-          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg" alt="Placeholder image" style="width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 8px;">
+        <a href="#" class="article-card__image">
+          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg" alt="Placeholder image">
         </a>
-        <p style="font-weight: 600; font-size: 0.875rem; margin-bottom: 0.5rem;">Category</p>
-        <a href="#" style="display: block; margin-bottom: 0.5rem;">
-          <h5 style="font-size: 1.25rem; font-weight: 700;">Blog title heading will go here</h5>
+        <p class="article-card__category">Category</p>
+        <a href="#" class="article-card__title-link">
+          <h5 class="article-card__title">Blog title heading will go here</h5>
         </a>
-        <p style="margin-bottom: 1.5rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
-        <div style="display: flex; align-items: center;">
-          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg" alt="Placeholder avatar" style="width: 3rem; height: 3rem; border-radius: 9999px; margin-right: 1rem;">
+        <p class="article-card__excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
+        <div class="article-card__author-info">
+          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg" alt="Placeholder avatar" class="article-card__author-avatar">
           <div>
-            <h6 style="font-weight: 600; font-size: 0.875rem;">Full name</h6>
-            <div style="display: flex; align-items: center; font-size: 0.875rem; color: #666;">
+            <h6 class="article-card__author-name">Full name</h6>
+            <div class="article-card__meta">
               <p>11 Jan 2022</p>
-              <span style="margin: 0 0.5rem;">•</span>
+              <span class="article-card__meta-divider">•</span>
               <p>5 min read</p>
             </div>
           </div>
@@ -53,21 +162,21 @@
       </div>
 
       <div class="article-card">
-        <a href="#" style="display: block; margin-bottom: 1.5rem;">
-          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg" alt="Placeholder image" style="width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 8px;">
+        <a href="#" class="article-card__image">
+          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg" alt="Placeholder image">
         </a>
-        <p style="font-weight: 600; font-size: 0.875rem; margin-bottom: 0.5rem;">Category</p>
-        <a href="#" style="display: block; margin-bottom: 0.5rem;">
-          <h5 style="font-size: 1.25rem; font-weight: 700;">Blog title heading will go here</h5>
+        <p class="article-card__category">Category</p>
+        <a href="#" class="article-card__title-link">
+          <h5 class="article-card__title">Blog title heading will go here</h5>
         </a>
-        <p style="margin-bottom: 1.5rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
-        <div style="display: flex; align-items: center;">
-          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg" alt="Placeholder avatar" style="width: 3rem; height: 3rem; border-radius: 9999px; margin-right: 1rem;">
+        <p class="article-card__excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
+        <div class="article-card__author-info">
+          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg" alt="Placeholder avatar" class="article-card__author-avatar">
           <div>
-            <h6 style="font-weight: 600; font-size: 0.875rem;">Full name</h6>
-            <div style="display: flex; align-items: center; font-size: 0.875rem; color: #666;">
+            <h6 class="article-card__author-name">Full name</h6>
+            <div class="article-card__meta">
               <p>11 Jan 2022</p>
-              <span style="margin: 0 0.5rem;">•</span>
+              <span class="article-card__meta-divider">•</span>
               <p>5 min read</p>
             </div>
           </div>
@@ -76,8 +185,8 @@
 
     </div>
 
-    <div style="display: flex; justify-content: center; margin-top: 3.5rem;">
-      <a href="#" class="button" style="padding: 0.75rem 1.5rem; border: 1px solid #000; border-radius: 4px; text-decoration: none; color: #000;">View all</a>
+    <div class="custom-blog__button-wrapper">
+      <a href="#" class="custom-blog__button">View all</a>
     </div>
 
   </div>
@@ -85,7 +194,7 @@
 
 {% schema %}
   {
-    "name": "Blog Avanzado",
+    "name": "ESTE ES UN NUEVO BLOQUE",
     "tag": "section",
     "class": "section",
     "settings": [
@@ -93,7 +202,7 @@
     ],
     "presets": [
       {
-        "name": "Blog Avanzado"
+        "name": "ESTE ES UN NUEVO BLOQUE"
       }
     ]
   }
