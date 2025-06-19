@@ -101,32 +101,16 @@
         "padding_bottom": 36
       }
     },
-    "seccion_blog_reciente_fm6NNf": {
-      "type": "seccion-blog-reciente",
-      "blocks": {
-        "card_CUCNx4": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/ForceRenewZipHoodieRust_7.webp",
-            "title": "Título de la Tarjeta",
-            "description": "<p>Nourish Your Body with Delicious and Nutritious snacks made from high-quality ingredients!</p>",
-            "link": "shopify://products/force-renew-zip-hoodie"
-          }
-        }
-      },
-      "block_order": [
-        "card_CUCNx4"
-      ],
-      "name": "Blog Posts Recientes",
-      "settings": {
-        "heading": "Últimas Noticias"
-      }
+    "custom_testing_N4tcC7": {
+      "type": "custom_testing",
+      "name": "ESTE ES UN NUEVO BLOQUE",
+      "settings": {}
     }
   },
   "order": [
     "135ba7a3-e64e-4736-8050-4a1bb58b8a6c",
     "collage_8EN393",
     "video_hnhWX6",
-    "seccion_blog_reciente_fm6NNf"
+    "custom_testing_N4tcC7"
   ]
 }
