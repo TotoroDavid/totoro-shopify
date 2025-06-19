@@ -1,209 +1,168 @@
-<style>
-  /* Estilos base (Móvil Primero) */
-  .custom-blog-section {
-    padding: 4rem 1rem;
-  }
-  .custom-blog__header {
-    margin-bottom: 3.5rem;
-    text-align: center;
-    max-width: 640px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .custom-blog__tagline {
-    font-weight: 600;
-    margin-bottom: 1rem;
-    font-size: 1rem;
-  }
-  .custom-blog__heading {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    line-height: 1.1;
-  }
-  .custom-blog__grid {
-    display: grid;
-    grid-template-columns: 1fr; /* 1 columna por defecto */
-    gap: 2.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  .article-card__image {
-    display: block;
-    margin-bottom: 1.5rem;
-  }
-  .article-card__image img {
-    width: 100%;
-    aspect-ratio: 3/2;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  .article-card__category {
-    font-weight: 600;
-    font-size: 0.875rem;
-    margin-bottom: 0.5rem;
-  }
-  .article-card__title-link {
-    display: block;
-    margin-bottom: 0.5rem;
-    text-decoration: none;
-    color: inherit;
-  }
-  .article-card__title {
-    font-size: 1.25rem;
-    font-weight: 700;
-  }
-  .article-card__excerpt {
-    margin-bottom: 1.5rem;
-  }
-  .article-card__author-info {
-    display: flex;
-    align-items: center;
-  }
-  .article-card__author-avatar {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 9999px;
-    margin-right: 1rem;
-  }
-  .article-card__author-name {
-    font-weight: 600;
-    font-size: 0.875rem;
-  }
-  .article-card__meta {
-    display: flex;
-    align-items: center;
-    font-size: 0.875rem;
-    color: #6c6c6c;
-  }
-  .article-card__meta-divider {
-    margin: 0 0.5rem;
-  }
-  .custom-blog__button-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: 3.5rem;
-  }
-  .custom-blog__button {
-    padding: 0.75rem 1.5rem;
-    border: 1px solid #000;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #000;
-  }
-
-  /* --- LA MAGIA RESPONSIVE --- */
-  /* Se aplica solo si la pantalla es más ancha de 750px */
-  @media (min-width: 750px) {
-    .custom-blog__grid {
-      grid-template-columns: repeat(3, 1fr); /* 3 columnas en escritorio */
-    }
-    .custom-blog-section {
-       padding: 6rem 2rem;
-    }
-     .custom-blog__heading {
-      font-size: 3rem;
-    }
-  }
-</style>
+{{ 'section-blog-avanzado.css' | asset_url | stylesheet_tag }}
 
 <section class="custom-blog-section">
-  <div class="container">
+  <div class="page-width">
     <div class="custom-blog__header">
-      <p class="custom-blog__tagline">Blog</p>
-      <h2 class="custom-blog__heading">Short heading goes here</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      {%- if section.settings.tagline != blank -%}<p class="custom-blog__tagline">{{ section.settings.tagline }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="custom-blog__heading">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.description != blank -%}<div class="rte">{{ section.settings.description }}</div>{%- endif -%}
     </div>
 
     <div class="custom-blog__grid">
+      {%- for block in section.blocks -%}
+        <div class="article-card" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <a href="{{ block.settings.link | default: '#' }}" class="article-card__image-link">
+              <img src="{{ block.settings.image | image_url: width: 550 }}" alt="{{ block.settings.image.alt | escape }}" class="article-card__image">
+            </a>
+          {%- else -%}
+            <div class="article-card__image-link">
+              {{ 'image' | placeholder_svg_tag: 'article-card__image' }}
+            </div>
+          {%- endif -%}
 
-      <div class="article-card">
-        <a href="#" class="article-card__image">
-          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg" alt="Placeholder image">
-        </a>
-        <p class="article-card__category">Category</p>
-        <a href="#" class="article-card__title-link">
-          <h5 class="article-card__title">Blog title heading will go here</h5>
-        </a>
-        <p class="article-card__excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
-        <div class="article-card__author-info">
-          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg" alt="Placeholder avatar" class="article-card__author-avatar">
-          <div>
-            <h6 class="article-card__author-name">Full name</h6>
-            <div class="article-card__meta">
-              <p>11 Jan 2022</p>
-              <span class="article-card__meta-divider">•</span>
-              <p>5 min read</p>
+          {%- if block.settings.category != blank -%}<p class="article-card__category">{{ block.settings.category }}</p>{%- endif -%}
+          
+          <a href="{{ block.settings.link | default: '#' }}" class="article-card__title-link">
+            <h5 class="article-card__title">{{ block.settings.title }}</h5>
+          </a>
+          
+          <div class="article-card__excerpt rte">{{ block.settings.excerpt }}</div>
+
+          <div class="article-card__author-info">
+            {%- if block.settings.author_avatar != blank -%}
+              <img src="{{ block.settings.author_avatar | image_url: width: 96 }}" alt="{{ block.settings.author_avatar.alt | escape }}" class="article-card__author-avatar">
+            {%- else -%}
+               {{ 'image' | placeholder_svg_tag: 'article-card__author-avatar' }}
+            {%- endif -%}
+            <div>
+              {%- if block.settings.author_name != blank -%}<h6 class="article-card__author-name">{{ block.settings.author_name }}</h6>{%- endif -%}
+              <div class="article-card__meta">
+                {%- if block.settings.date != blank -%}<p>{{ block.settings.date }}</p>{%- endif -%}
+                {%- if block.settings.read_time != blank -%}<span class="article-card__meta-divider">•</span><p>{{ block.settings.read_time }}</p>{%- endif -%}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="article-card">
-        <a href="#" class="article-card__image">
-          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg" alt="Placeholder image">
-        </a>
-        <p class="article-card__category">Category</p>
-        <a href="#" class="article-card__title-link">
-          <h5 class="article-card__title">Blog title heading will go here</h5>
-        </a>
-        <p class="article-card__excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
-        <div class="article-card__author-info">
-          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg" alt="Placeholder avatar" class="article-card__author-avatar">
-          <div>
-            <h6 class="article-card__author-name">Full name</h6>
-            <div class="article-card__meta">
-              <p>11 Jan 2022</p>
-              <span class="article-card__meta-divider">•</span>
-              <p>5 min read</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="article-card">
-        <a href="#" class="article-card__image">
-          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg" alt="Placeholder image">
-        </a>
-        <p class="article-card__category">Category</p>
-        <a href="#" class="article-card__title-link">
-          <h5 class="article-card__title">Blog title heading will go here</h5>
-        </a>
-        <p class="article-card__excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>
-        <div class="article-card__author-info">
-          <img src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg" alt="Placeholder avatar" class="article-card__author-avatar">
-          <div>
-            <h6 class="article-card__author-name">Full name</h6>
-            <div class="article-card__meta">
-              <p>11 Jan 2022</p>
-              <span class="article-card__meta-divider">•</span>
-              <p>5 min read</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      {%- endfor -%}
     </div>
 
-    <div class="custom-blog__button-wrapper">
-      <a href="#" class="custom-blog__button">View all</a>
-    </div>
-
+    {%- if section.settings.button_label != blank -%}
+      <div class="custom-blog__button-wrapper">
+        <a href="{{ section.settings.button_link | default: '#' }}" class="custom-blog__button">{{ section.settings.button_label }}</a>
+      </div>
+    {%- endif -%}
   </div>
 </section>
 
 {% schema %}
-  {
-    "name": "ESTE ES UN NUEVO BLOQUE",
-    "tag": "section",
-    "class": "section",
-    "settings": [
-      
-    ],
-    "presets": [
-      {
-        "name": "ESTE ES UN NUEVO BLOQUE"
-      }
-    ]
-  }
+{
+  "name": "Blog Personalizado",
+  "tag": "section",
+  "class": "custom-blog-section",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "t:sections.custom_blog.settings.tagline.label",
+      "default": "Blog"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título principal",
+      "default": "Título de la Sección"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Descripción",
+      "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Botón 'Ver todo'"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texto del botón",
+      "default": "Ver todo"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Enlace del botón"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "article_card",
+      "name": "Tarjeta de Artículo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen Principal"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Enlace de la tarjeta (opcional)"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Categoría",
+          "default": "Categoría"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Título del Artículo"
+        },
+        {
+          "type": "richtext",
+          "id": "excerpt",
+          "label": "Resumen",
+          "default": "<p>Escribe un breve resumen aquí.</p>"
+        },
+        {
+          "type": "header",
+          "content": "Información del Autor"
+        },
+        {
+          "type": "image_picker",
+          "id": "author_avatar",
+          "label": "Avatar del Autor"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Nombre del Autor",
+          "default": "Nombre Completo"
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Fecha",
+          "default": "18 Jun, 2025"
+        },
+        {
+          "type": "text",
+          "id": "read_time",
+          "label": "Tiempo de Lectura",
+          "default": "5 min read"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Personalizado"
+    }
+  ]
+}
 {% endschema %}
