@@ -1,0 +1,159 @@
+<style>
+  .hero-section-{{ section.id }} {
+    padding: 4rem 1rem;
+    text-align: center;
+  }
+  .hero-section__header {
+    max-width: 740px;
+    margin: 0 auto 3.5rem auto;
+  }
+  .hero-section__heading {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+  .hero-section__description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .hero-section__buttons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  .hero-section__image-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .hero-section__image {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (min-width: 750px) {
+    .hero-section-{{ section.id }} {
+      padding: 6rem 2rem;
+    }
+    .hero-section__heading {
+      font-size: 4.5rem;
+    }
+  }
+</style>
+
+<section class="hero-section-{{ section.id }}">
+  <div class="page-width">
+    <div class="hero-section__header">
+      {%- if section.settings.heading != blank -%}
+        <h1 class="hero-section__heading">{{ section.settings.heading }}</h1>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <div class="hero-section__description rte">{{ section.settings.description }}</div>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="hero-section__buttons">
+          {%- for block in section.blocks -%}
+            <a href="{{ block.settings.button_link | default: '#' }}" 
+               class="button {% if block.settings.button_style_secondary %}button--secondary{% else %}button--primary{% endif %}"
+               {{ block.shopify_attributes }}>
+              {{ block.settings.button_label | escape }}
+            </a>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="hero-section__image-wrapper">
+      {%- if section.settings.image != blank -%}
+        <img
+          src="{{ section.settings.image | image_url: width: 1200 }}"
+          alt="{{ section.settings.image.alt | default: section.settings.heading | escape }}"
+          width="{{ section.settings.image.width }}"
+          height="{{ section.settings.image.height }}"
+          loading="lazy"
+          class="hero-section__image"
+        >
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero con Imagen",
+  "tag": "section",
+  "class": "hero-section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Título",
+      "default": "Medium length hero heading goes here"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Descripción",
+      "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "button",
+      "name": "Botón",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Texto del botón",
+          "default": "Button"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Enlace del botón"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_style_secondary",
+          "label": "Usar estilo secundario (borde)",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero con Imagen",
+      "category": "Componentes Personalizados",
+      "blocks": [
+        {
+          "type": "button"
+        },
+        {
+          "type": "button",
+          "settings": {
+            "button_style_secondary": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
