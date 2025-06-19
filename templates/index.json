@@ -103,6 +103,53 @@
     },
     "custom_testing_PaK7mp": {
       "type": "custom_testing",
+      "blocks": {
+        "article_card_FXV7hN": {
+          "type": "article_card",
+          "settings": {
+            "image": "shopify://shop_images/fitness-workout.jpg",
+            "link": "",
+            "category": "Categoría",
+            "title": "Título del Artículo",
+            "excerpt": "<p>Escribe un breve resumen aquí.</p>",
+            "author_avatar": "shopify://shop_images/MiaMeshBraStingSep19Redo.webp",
+            "author_name": "Nombre Completo",
+            "date": "18 Jun, 2025",
+            "read_time": "5 min read"
+          }
+        },
+        "article_card_Xd4ixe": {
+          "type": "article_card",
+          "settings": {
+            "image": "shopify://shop_images/MiaMeshBraSting.webp",
+            "link": "",
+            "category": "Categoría",
+            "title": "Título del Artículo",
+            "excerpt": "<p>Escribe un breve resumen aquí.</p>",
+            "author_name": "Nombre Completo",
+            "date": "18 Jun, 2025",
+            "read_time": "5 min read"
+          }
+        },
+        "article_card_dawzab": {
+          "type": "article_card",
+          "settings": {
+            "image": "shopify://shop_images/PowerShortSleeveCarob_1.webp",
+            "link": "",
+            "category": "Categoría",
+            "title": "Título del Artículo",
+            "excerpt": "<p>Escribe un breve resumen aquí.</p>",
+            "author_name": "Nombre Completo",
+            "date": "18 Jun, 2025",
+            "read_time": "5 min read"
+          }
+        }
+      },
+      "block_order": [
+        "article_card_FXV7hN",
+        "article_card_Xd4ixe",
+        "article_card_dawzab"
+      ],
       "name": "Blog Personalizado",
       "settings": {
         "tagline": "Blog",
