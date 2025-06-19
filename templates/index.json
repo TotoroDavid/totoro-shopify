@@ -101,16 +101,22 @@
         "padding_bottom": 36
       }
     },
-    "custom_testing_N4tcC7": {
+    "custom_testing_PaK7mp": {
       "type": "custom_testing",
-      "name": "ESTE ES UN NUEVO BLOQUE",
-      "settings": {}
+      "name": "Blog Personalizado",
+      "settings": {
+        "tagline": "Blog",
+        "heading": "Título de la Sección",
+        "description": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>",
+        "button_label": "Ver todo",
+        "button_link": ""
+      }
     }
   },
   "order": [
     "135ba7a3-e64e-4736-8050-4a1bb58b8a6c",
     "collage_8EN393",
     "video_hnhWX6",
-    "custom_testing_N4tcC7"
+    "custom_testing_PaK7mp"
   ]
 }
